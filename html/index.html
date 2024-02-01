@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to left bottom, crimson, black);
+            font-family: Arial, sans-serif;
+        }
+
+        .calculadora {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .display {
+            width: 100%;
+            font-size: 24px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: right;
+        }
+
+        .linha {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .botao {
+            width: 70px;
+            height: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .botao:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .autor {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+            color: #ccc;
+            font-size: 16px;
+        }
+
+        .autor a {
+            color: #00f;
+            text-decoration: none;
+        }
+
+        .autor a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" class="display" id="resultado" disabled>
+        <div class="linha">
+            <button class="botao" onclick="limpar()">C</button>
+            <button class="botao" onclick="apagar()">←</button>
+            <button class="botao" onclick="adicionar('/')">/</button>
+            <button class="botao" onclick="adicionar('*')">*</button>
+        </div>
+        <div class="linha">
+            <button class="botao" onclick="adicionar('7')">7</button>
+            <button class="botao" onclick="adicionar('8')">8</button>
+            <button class="botao" onclick="adicionar('9')">9</button>
+            <button class="botao" onclick="adicionar('-')">-</button>
+        </div>
+        <div class="linha">
+            <button class="botao" onclick="adicionar('4')">4</button>
+            <button class="botao" onclick="adicionar('5')">5</button>
+            <button class="botao" onclick="adicionar('6')">6</button>
+            <button class="botao" onclick="adicionar('+')">+</button>
+        </div>
+        <div class="linha">
+            <button class="botao" onclick="adicionar('1')">1</button>
+            <button class="botao" onclick="adicionar('2')">2</button>
+            <button class="botao" onclick="adicionar('3')">3</button>
+            <button class="botao" onclick="calcular()">=</button>
+        </div>
+        <div class="linha">
+            <button class="botao" onclick="adicionar('0')">0</button>
+            <button class="botao" onclick="adicionar('.')">.</button>
+        </div>
+    </div>
+
+    <div class="autor">
+        Calculadora feita por <a href="https://www.linkedin.com/in/alax-fernando/" target="_blank">Alax Fernando</a>
+    </div>
+
+    <script>
+        function adicionar(valor) {
+            document.getElementById("resultado").value += valor;
+        }
+
+        function limpar() {
+            document.getElementById("resultado").value = "";
+        }
+
+        function apagar() {
+            var resultado = document.getElementById("resultado").value;
+            document.getElementById("resultado").value = resultado.slice(0, -1);
+        }
+
+        function calcular() {
+            var resultado = eval(document.getElementById("resultado").value);
+            document.getElementById("resultado").value = resultado;
+        }
+    </script>
+</body>
+</html>
